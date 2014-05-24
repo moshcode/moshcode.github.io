@@ -1,0 +1,21 @@
+{
+  "name": "Sinoscar - Helpdesk",
+  "version": "0.1.0",
+  "dependencies": {
+    "html5-boilerplate": "latest",
+    "normalize-css": "latest",
+    "html5shiv": "latest",
+    "respond": "latest",
+    "bootstrap": "latest",
+    "jquery": "1.11.0",
+    "fontawesome": "latest"
+  },
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
