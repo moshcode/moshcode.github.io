@@ -141,6 +141,11 @@
 <script>window.jQuery || document.write('<script src="js/libs/jquery.min.js"><\/script>')</script>
 <script>
     (function ($) {
+
+        if (/constructor/i.test(window.HTMLElement)) {
+            $('body').addClass('safari');
+        }
+
         if ('\v'=='v') {
             $('body').addClass('ie-8');
         }
