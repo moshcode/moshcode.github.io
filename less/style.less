@@ -36,13 +36,15 @@ h2, h3{
 
 h2{
     font-size: 2.75em;
+    line-height: 0.8;
 }
 
 h3{
     font-size: 2.25em;
     &:before {
-      counter-increment: section;
-      content: counter(section) ". ";
+        color: #BFBAB1;
+        counter-increment: section;
+        content: "0" counter(section) ". ";
     }
 }
 
@@ -135,8 +137,58 @@ strong{
 */
 
 .header{
+    position: absolute;
+    z-index: 3;
+    left: 5%;
+    right: 5%;
+    top: 80px;
+}
+
+h1{
+    .visuallyhidden();
+}
+
+.nav{
+
+    ul{
+        padding: 0;
+        line-height: 2.4;
+        text-align: center;
+    }
+
+    li{
+        display: inline-block;
+        list-style: none;
+        text-transform: uppercase;
+        margin-left: 1em;
+
+        &:first-child{
+            margin-left: 0;
+        }
+    }
+
+    a{
+        color: #F3F0EB;
+        border-bottom: none;
+        font-weight: normal;
+        font-size: 0.85em;
+
+        &:hover{
+            border-bottom: 3px solid;
+        }
+    }
+}
+
+
+/*
+// Intro
+*/
+
+.intro{
     background: #543343 url(../img/bg.jpg) no-repeat center;
     background-size: auto 100%;
+    height: 520px;
+    padding-top: 100px;
 
     .ie-8 &{
         background-image: none;
@@ -147,43 +199,11 @@ strong{
     }
 }
 
-h1{
-    .visuallyhidden();
-}
-
-.nav{
-    display: none;
-
-    ul{
-        padding: 0;
-        line-height: 2.4;
-    }
-
-    li{
-        display: inline-block;
-        list-style: none;
-        text-transform: uppercase;
-        margin-left: 2em;
-
-        &:first-child{
-            margin-left: 0;
-        }
-    }
-
-    a{
-        color: #E5DFD2;
-        border-bottom: none;
-
-        &:hover{
-            border-bottom: 3px solid;
-        }
-    }
-}
-
 .headline{
     clear: both;
     font-size: 2em;
-    max-width: 16em;
+    line-height: 1.1;
+    margin-bottom: 0.5em;
 
     strong{
         color: #DF85B2;
@@ -196,11 +216,23 @@ h1{
     }
 }
 
-.contact-btn{
-    margin-top: 1.8em;
+.slidedown{
+    background: url(../img/arrow.png) no-repeat center;
+    border-radius: 50%;
+    border: 2px solid #F3F0EB;
+    opacity: .5;
+    width: 74px;
+    height: 74px;
+    margin: auto;
     display: block;
-    text-align: center;
+
+    &:hover{
+        border-width: 2px;
+        border-bottom-color: #F3F0EB;
+        opacity: 1;
+    }
 }
+
 
 /*
 // About
@@ -232,7 +264,7 @@ h1{
 }
 
 .about-intro{
-    font-size: 1.625em;
+    font-size: 2em;
 }
 
 /*
@@ -261,47 +293,13 @@ h1{
 }
 
 /*
-// Technology
+// Team
 */
 
-#tecnologia{
-    .content{
-        overflow: hidden;
-    }
-
-    .col-right{
-        float: right;
-
-        p{
-            padding-bottom: 2em;
-        }
-    }
-}
-
-.tech-list{
-    padding: 0;
-    text-align: center;
-
-    li{
-        border: 6px solid #DAD5C9;
-        display: inline-block;
-        list-style: none;
-        border-radius: 50%;
-        width: 62px;
-        height: 62px;
-        padding: 14px;
-        margin: 0 0.25em 1em;
-        vertical-align: middle;
-        text-align: center;
-    }
-
-    img{
-        max-width: 100%;
-        max-height: 100%;
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
-    }
+.team-image{
+    float: right;
+    max-width: 100%;
+    margin-bottom: 2em;
 }
 
 /*
@@ -337,32 +335,9 @@ h1{
         margin-left: auto;
         text-align: right;
     }
-    .header{
-        position: fixed;
-        left: 0;
-        right: 0;
-        top: 0;
-    }
 
-    #sobre{
-        margin-top: 700px;
-    }
-
-    .logo{
-        margin-bottom: 20%;
-    }
-
-    .nav{
-        display: block;
-    }
-
-    .headline{
-        background: url(../img/arrow.png) no-repeat center left;
-        padding-left: 1em;
-    }
-
-    #sobre .col{
-        text-align: left;
+    .nav li{
+        margin-left: 2em;
     }
 
     .contact-us{
@@ -389,17 +364,18 @@ h1{
     .nav{
         float: right;
     }
-
-    .headline{
-        float: left;
-    }
-
-    .contact-btn{
-        float: right;
-    }
 }
 
 @media (min-width: 768px) {
+    .headline{
+        font-size: 3em;
+        text-align: right;
+    }
+
+    .slidedown{
+        margin-right: 0;
+    }
+
     .col{
         max-width: 38%;
     }
@@ -410,7 +386,7 @@ h1{
 
 
     #sobre .col{
-        max-width: 59%;
+        max-width: 470px;
     }
 
     #metodologia-detalhe .col{
@@ -421,34 +397,18 @@ h1{
         background: url(../img/blender.png) no-repeat bottom right;
     }
 
-    #time{
-        &:before{
-            content: '';
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            border: 300px solid transparent;
-            border-right-color: #4A2D3A;
-            border-bottom-color: #4A2D3A;
-        }
-
-        &:after{
-            content: url(../img/team.png);
-            position: absolute;
-            right: 90px;
-            bottom: 105px;
-        }
-    }
-
-    .tech-list{
-        max-width: 400px;
-        margin-top: 7em;
-    }
 }
 
-@media (min-width: 820px) {
-    #tecnologia .col-right:after{
-        content: url(../img/technology.png);
+@media (min-width: 58.75em) {
+    .header{
+        width: 58.75em;
+        left: 50%;
+        right: auto;
+        margin-left: -29.375em;
+    }
+
+    .headline{
+        font-size: 4em;
     }
 }
 
@@ -456,13 +416,5 @@ h1{
     .content{
         width: 60.625em;
         padding: 5em 0.313em 4em;
-    }
-
-    .contact-btn{
-        padding: 0 5em;
-    }
-
-    #sobre{
-        margin-top: 768px;
     }
 }
