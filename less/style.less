@@ -27,7 +27,6 @@ body{
     font-family: 'Open Sans', sans-serif;
     font-weight: 100;
     -webkit-font-smoothing: antialiased;
-    counter-reset: section;
 }
 
 h2, h3{
@@ -39,15 +38,6 @@ h2{
     line-height: 0.8;
 }
 
-h3{
-    font-size: 2.25em;
-    &:before {
-        color: #BFBAB1;
-        counter-increment: section;
-        content: "0" counter(section) ". ";
-    }
-}
-
 a{
     color: #9F607F;
     font-weight: bold;
@@ -57,6 +47,10 @@ a{
     &:hover{
         border-bottom: 4px solid;
     }
+}
+
+p{
+    line-height: 1.8;
 }
 
 strong{
@@ -71,8 +65,8 @@ strong{
 
     box-shadow: inset 0 60px 0 rgba(0,0,0,.1) , inset 0 40px 0 rgba(0,0,0,.1) ,inset 0 20px 0 rgba(0,0,0,.1);
 
-    h2, h3{
-        color: #523343;
+    h2{
+
     }
 }
 
@@ -113,13 +107,20 @@ strong{
 .btn{
     display: inline-block;
     border: none;
-    border-radius: 5px;
+    border-radius: 50%;
     color: #fff;
+    cursor: pointer;
     background: #1bafce;
-    font-size: 1.25em;
-    line-height: 3.75em;
-    padding: 0 2em;
+    font: normal bold 1.625em/72px "Montserrat", sans-serif;
+
     box-shadow: 0 5px 0 rgba(0,0,0,.3);
+    text-align: center;
+
+    margin-bottom: 0.5em;
+
+
+    width: 72px;
+    height: 72px;
 
     &:hover{
         border: none;
@@ -129,6 +130,14 @@ strong{
     &:active{
         transform: translateY(5px);
         box-shadow: none;
+    }
+
+    + .btn{
+        margin-left: 0.5em;
+    }
+
+    &:first-child{
+        margin-left: 0;
     }
 }
 
@@ -187,15 +196,12 @@ h1{
 .intro{
     background: #543343 url(../img/bg.jpg) no-repeat center;
     background-size: auto 100%;
+    background-attachment: fixed;
     height: 520px;
     padding-top: 100px;
 
     .ie-8 &{
         background-image: none;
-    }
-
-    .safari &{
-        z-index: -1;
     }
 }
 
@@ -265,6 +271,30 @@ h1{
 
 .about-intro{
     font-size: 2em;
+    line-height: 1.2;
+}
+
+
+/*
+// Work
+*/
+.work{
+    background: #543343 url(../img/work.jpg) no-repeat center;
+    background-attachment: fixed;
+    overflow: hidden;
+
+    .ie-8 &{
+        background-image: none;
+    }
+
+    h3{
+        color: #DF85B2;
+        font-size: 1.375em;
+    }
+
+    p{
+        margin-bottom: 2em;
+    }
 }
 
 /*
@@ -288,8 +318,53 @@ h1{
     }
 }
 
+.process-image{
+    display: block;
+    max-width: 80%;
+    margin: auto;
+}
+
+#metodologia-detalhe{
+    .content{
+        overflow: hidden;
+    }
+
+    h3{
+        color: #523343;
+        font-size: 2.25em;
+
+        &:before {
+            color: #BFBAB1;
+        }
+    }
+}
+
 .slide + .slide{
     display: none;
+}
+
+.slide-1 h3:before{
+    content: "01. ";
+}
+
+.slide-2 h3:before{
+    content: "02. ";
+}
+
+.slide-3 h3:before{
+    content: "03. ";
+}
+
+.slide-4 h3:before{
+    content: "04. ";
+}
+
+.slide-5 h3:before{
+    content: "05. ";
+}
+
+.slide-nav{
+    margin-top: 4em;
 }
 
 /*
@@ -310,17 +385,53 @@ h1{
     h2{
         .visuallyhidden();
     }
+}
 
-    p{
-        font-size: 1.4em;
-        text-align: center;
+.contact-headline{
+    font-weight: bold;
+    font-size: 1.375em;
+    line-height: 1.2;
+    margin-bottom: 3em;
+}
+
+.contact-info{
+    position: relative;
+
+    dt{
+        color: #78D8EC;
+        line-height: 2.5;
+    }
+
+    dd{
+        margin-bottom: 1em;
+        font-size: 1.625em;
+        padding-left: 0;
+
+        &.address{
+            font-size: 1.25em;
+            line-height: 1.2;
+        }
     }
 
     a{
-        color: #533343;
+        color: #0C505F;
+        border: none;
     }
 }
 
+.address{
+    a{
+        border: none;
+        color: #fff;
+        font-weight: normal;
+    }
+}
+
+.google-maps{
+    text-indent: -999999em;
+    text-align: left;
+    display: none;
+}
 
 /*
 // Media queries
@@ -341,18 +452,23 @@ h1{
     }
 
     .contact-us{
-        .content{
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 40%;
-        }
+        text-align: right;
 
-        p{
-            font-size: 2em;
-        }
+        background: #1bafce url(../img/contact.png) no-repeat left bottom;
+    }
+
+    .contact-info{
+        max-width: 300px;
+        margin-left: auto;
+    }
+
+    .google-maps{
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 65%;
     }
 }
 
@@ -384,19 +500,42 @@ h1{
         padding: 0;
     }
 
-
     #sobre .col{
         max-width: 470px;
+    }
+
+    .work h2{
+        text-align: center;
+    }
+
+    .work-col{
+        float: left;
+        max-width: 47.5%;
+        margin-bottom: 2em;
+
+        + .col{
+            float: right;
+            max-width: 47.5%;
+        }
     }
 
     #metodologia-detalhe .col{
         max-width: 52%;
     }
 
+    .process-image{
+        float: left;
+        margin-right: 2em;
+    }
+
     #metodologia .content{
         background: url(../img/blender.png) no-repeat bottom right;
     }
 
+    .contact-us{
+        background-position: center bottom;
+        background-size: auto 100%;
+    }
 }
 
 @media (min-width: 58.75em) {
